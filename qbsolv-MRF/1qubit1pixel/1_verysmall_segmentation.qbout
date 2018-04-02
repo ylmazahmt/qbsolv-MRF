@@ -1,0 +1,15 @@
+81 bits,  find Min, SubMatrix= 47, -a o, timeout=2592000.0 sec
+101011100000001001101110010000000100010111101010100000010011111100101000010110101
+-901.37255 Energy of solution
+0 Number of Partitioned calls, 1 output sample 
+ 0.00296 seconds of classic cpu time
+81 bits,  find Min, SubMatrix= 47, -a o, timeout=2592000.0 sec
+010101101100001000101110011000000100010111101010100000101011111010001000100110101
+-932.94118 Energy of solution
+1 Number of Partitioned calls, 2 output sample 
+ 0.00901 seconds of classic cpu time
+81 bits,  find Min, SubMatrix= 47, -a o, timeout=2592000.0 sec
+010101110100001000101110011000000100010111101010100000101011111000001000110110101
+-932.94118 Energy of solution
+2 Number of Partitioned calls, 3 output sample 
+ 0.01515 seconds of classic cpu time
