@@ -1,4 +1,4 @@
-#Segmenting the image using D-Wave's Qbsolv
+Segmenting the image using D-Wave's Qbsolv
 ===========================================
 
 Two python scripts are available for running the model on qbsolv:

@@ -1,4 +1,4 @@
-#Segmenting the image using ICM algorithm
+Segmenting the image using ICM algorithm
 =========================================
 
 Python script for running the model on ICM algorithm is 'icm_mrf.py':
