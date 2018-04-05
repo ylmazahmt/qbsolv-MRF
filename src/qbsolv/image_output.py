@@ -11,7 +11,8 @@ from random import randint
 
 def main():
 	img_source_path = sys.argv[1]
-	foo1, foo2, foo3, file_name = img_source_path.split("/")
+	args = img_source_path.split("/")
+	file_name = args[-1]
 	img_name, ext = file_name.split(".")
 	seg_file_name = img_name + "_segmentation.qbout"
 	rel_path = "result/" +img_name + "/"

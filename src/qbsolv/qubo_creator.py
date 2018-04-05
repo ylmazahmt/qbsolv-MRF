@@ -8,14 +8,20 @@ import cv2
 import scipy
 import math
 from random import randint
-import sys
-import os
+import sys,inspect,os
 
+cmd_folder = os.path.realpath(os.path.abspath(os.path.split(inspect.getfile( inspect.currentframe() ))[0]))
+args = cmd_folder.split('/')
+src_folder = '/'.join(args[:-1])
+sys.path.insert(0, (src_folder))
+
+from MRF.mrf import *
 
 def main():
 	# Read in image
 	img_source_path = sys.argv[1]
-	foo1, foo2, foo3, file_name = img_source_path.split("/")
+	args = img_source_path.split("/")
+	file_name = args[-1]
 	global total_cost
 	old_total_cost = 0
 	img=Image.open(img_source_path)
@@ -63,45 +69,6 @@ def qubo_extractor(img,file_name):
 	f.write('p  '+ 'qubo  ' + '0  ' + str(N*M*2) + ' ' + str(N*M*2) + ' ' + str(coupler_count) + '\n')
 	f.write(content)
 	f.close()
-
-
-
-def unary_potential(img,label,i,j):
-	if(label == 0):
-		return (img[i,j]/255.0) - 1
-	else:
-		return (0 - (img[i,j]/255.0))
-	
-	
-
-def find_neighbors(img,i,j):
-	(M,N)=img.shape[0:2]
-	#find correct neighbors
-	
-	#right-bottom corner(no post neighbors available for this pixel)
-	if i==M-1 and j==N-1:
-		neighbor=[]
-	#bottom line
-	elif i==M-1:
-		neighbor=[(M-1,j+1)]
-	#right line
-	elif j==N-1:
-		neighbor=[(i+1,N-1)]
-	#any other pixel
-	else:
-		neighbor=[(i,j+1), (i+1,j+1), (i+1,j)]
-
-	return neighbor
-
-def f_1(img,i,j,k):
-	k_1 = 1
-	cost = (k_1 * (abs(img[i,j] - img[k])/255.0))
-	return cost
-
-def f_2(img,i,j,k):
-	k_2 = 0.025
-	cost = k_2 * ((1 - (abs(img[i,j] - img[k])/255.0)))
-	return cost
 
 
 

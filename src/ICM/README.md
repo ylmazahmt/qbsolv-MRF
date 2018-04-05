@@ -7,9 +7,9 @@ _(Note that to run it on an image image imput must be inserted in 'img' folder i
 
 Afterwards following code snippet can be used to run algorithm on image desired:
 
-`python icm_mrf.py 'img_name'`
+`python icm.py 'img_name'`
 
 Example run:
 
-`python icm_mrf.py 1_small.png`
+`python icm.py 1_small.png`
 

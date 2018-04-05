@@ -9,7 +9,7 @@ def main():
 	img_name, ext = file_name.split(".")
 	rel_path = "result/" +img_name + "/"
 	img_source_path = "../../img/" + file_name
-
+	
 	if(os.path.isfile(img_source_path) != 1):
 		print("File (",img_source_path,") does not exist!")
 		return

@@ -1,4 +1,4 @@
-Segmenting the image using D-Wave's Qbsolv
+# Segmenting the image using D-Wave's Qbsolv
 ===========================================
 
 Two python scripts are available for running the model on qbsolv:
@@ -16,11 +16,11 @@ _(Note that to run it image input must be inserted in 'img' folder in root direc
 
 Afterwards following code snippet can be used to run algorithm on image desired:
 
-`python qbsolf_mrf.py 'img_name'`
+`python qbsolv.py 'img_name'`
 
 Example run:
 
-`python qbsolv_mrf.py 1_small.png`
+`python qbsolv.py 1_small.png`
 
 2 - Built-in Python Library:
 ------------------------
@@ -29,8 +29,8 @@ _(Note that to run it image input must be inserted in 'img' folder in root direc
 
 Afterwards following code snippet can be used to run algorithm on image desired:
 
-`python qbsolf_mrf_python.py 'img_name'`
+`python qbsolv_python.py 'img_name'`
 
 Example run:
 
-`python qbsolv_mrf_python.py 1_small.png`
+`python qbsolv_python.py 1_small.png`
