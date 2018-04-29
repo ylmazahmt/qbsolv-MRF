@@ -8,6 +8,14 @@ import cv2
 import scipy
 import math
 from random import randint
+import sys,os,inspect
+
+cmd_folder = os.path.realpath(os.path.abspath(os.path.split(inspect.getfile( inspect.currentframe() ))[0]))
+args = cmd_folder.split('/')
+src_folder = '/'.join(args[:-1])
+sys.path.insert(0, (src_folder))
+
+from MRF.superpixel import *
 
 def main():
 	img_source_path = sys.argv[1]
@@ -20,7 +28,7 @@ def main():
 	img=Image.open(img_source_path)
 	img=numpy.array(img)
 	(M,N) = img.shape[0:2]
-
+	segments = getSegments(img)
 	counter = 0
 	# Read in image
 	array =[]
@@ -30,25 +38,28 @@ def main():
 				array = (line)
 			counter += 1
 	
-	counter = 1
-	out = []
+	counter = 0
+	seg = []
 	for i in array:
 		mode = counter
-		if(counter > (N*M*2)):
-			continue
-		if(mode%2 == 1):
+		if(mode%2 == 0):
 			if i == '1':
-				out.append(1)
+				seg.append(1)
 			else:
-				out.append(0)
+				seg.append(0)
 		counter += 1
 
-	out= numpy.array(out)
-	out = out.reshape(M,N)
+	seg= numpy.array(seg)
 
+	output_image = numpy.zeros(shape=(M,N))
+	for i in range(M):
+		for j in range(N):
+			if seg[segments[i,j]] == 1:
+				output_image[i,j] = img[i,j]
+	
 	output_file_name = str(img_name) + "_out." + str(ext)
 	file_path = rel_path + output_file_name
-	scipy.misc.imsave(file_path,out)
+	scipy.misc.imsave(file_path,output_image*255)
 	
 if __name__=="__main__":
 	main()	

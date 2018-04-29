@@ -17,9 +17,10 @@ src_folder = '/'.join(args[:-1])
 sys.path.insert(0, (src_folder))
 
 from MRF.mrf import *
+from MRF.superpixel import *
 
 total_cost = 1000000
-threshold = 2000
+threshold = 0.4
 def main():
 	# Read in image
 	global total_cost
@@ -29,50 +30,61 @@ def main():
 	img_name, ext = file_name.split(".")
 	rel_path = "result/" +img_name + "/"
 	img_source_path = "../../img/" + file_name
-
+	img_model_path = "../../img/" + img_name + "_model.txt"
 	if os.path.isfile(img_source_path) != 1:
 		print("File (",img_source_path,") does not exist!")
 		return
 
-	img=Image.open(img_source_path)
-	img=numpy.array(img)
+	image=Image.open(img_source_path)
+	img=numpy.array(image)
+	
+	# Create Superpixels and Model 
+	superpixels,segNeighbors,segments,_,segDict = superpixel_extractor(img)
+	foregroundModel, backgroundModel = model_extractor(image,img_model_path)
+	
 	(M,N)=img.shape[0:2]
 	print(M,N)
-	seg = init_config(img)
+	seg = init_config(superpixels)
 	while(abs(total_cost - old_total_cost) > threshold):
-		#print (seg)
-		#print(seg[540,960])
 		old_total_cost = total_cost
-		seg = ICM(img,seg)
+		seg = ICM(superpixels,seg,segNeighbors,foregroundModel,backgroundModel)
 		print(total_cost)
 
 	if(os.path.isdir("result/" + img_name) != 1):
 		call(["mkdir","result/" + img_name])
 
+	output_image = numpy.zeros(shape=(M,N))
 	output_file_name = str(img_name) + "_out." + str(ext)
 	file_path = rel_path + output_file_name
-	scipy.misc.imsave(file_path,seg*255)
-
-
-def init_config(img):
-	(M,N)=img.shape[0:2]
-	img_seg = numpy.zeros(shape=(M,N))
 	for i in range(M):
 		for j in range(N):
-			img_seg[i,j] = randint(0, 1)
+			if seg[segments[i,j]] == 1:
+				output_image[i,j] = img[i,j]
+	scipy.misc.imsave(file_path,output_image*255)
+
+	if(os.path.isfile(file_path)):
+		call(["open", file_path])
+		return
+
+def init_config(superpixels):
+	(N)= len(superpixels)
+	print("Segment Count:",N)
+	img_seg = numpy.zeros(shape=(N))
+	for i in range(N):
+		img_seg[i] = randint(0, 1)
+	print("img_seg",img_seg)
 	return img_seg
 
-def ICM(img,seg):
+def ICM(superpixels,seg,segNeighbors,foregroundModel,backgroundModel):
 	global total_cost
 	total_cost = 0
-	(M,N)=seg.shape[0:2]
-	for i in range(M):
-		for j in range(N):
-			# Find segmentation level which has min energy (highest posterior)
-			cost=[energy(img,seg, k, i, j) for k in range(2)]
-			total_cost += min(cost)
-			#print (total_cost)
-			seg[i,j]=cost.index(min(cost))
+	(N)= len(superpixels)
+	for i in range(N):
+		# Find segmentation level which has min energy (highest posterior)
+		cost=[energy(superpixels,seg,k,i,segNeighbors,foregroundModel,backgroundModel) for k in range(2)]
+		total_cost += min(cost)
+		#print (total_cost)
+		seg[i]=cost.index(min(cost))
 	return seg
 
 
