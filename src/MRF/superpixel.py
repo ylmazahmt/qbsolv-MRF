@@ -29,8 +29,9 @@ def model_extractor(image,img_model_path):
 	print("Background Model:", backgroundModel)
 	return foregroundModel, backgroundModel
 
-def getSegments(image):
-	image = np.dstack([image, image, image])
+def getSegments(image, isGrayscale):
+	if isGrayscale:
+		image = np.dstack([image, image, image])
 	segments = slic(image, n_segments = numSegments, sigma = 5)
 	return segments
 
@@ -46,7 +47,7 @@ def superpixel_extractor(image):
 	img = image
 	# # load the image and convert it to a floating point data type
 	# image = img_as_float(io.imread(args["image"]))
-	segments = getSegments(image)
+	segments = getSegments(image,1)
 	print(segments)
 	# show the output of SLIC
 	fig = plt.figure("Superpixels -- %d segments" % (numSegments))

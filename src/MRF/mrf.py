@@ -28,15 +28,15 @@ def histogram_intersection(segment_1, segment_2):
 		
 def unary_potential(superpixels,label,i,foregroundModel,backgroundModel):
 	if(label == 0):
-		return histogram_intersection(superpixels[i],backgroundModel) - 1
+		return 0 - histogram_intersection(superpixels[i],backgroundModel)
 	else:
-		return histogram_intersection(superpixels[i],foregroundModel) - 1
+		return 0 - histogram_intersection(superpixels[i],foregroundModel)
 
 def doubleton_potential(superpixels,label,neighborLabel,i,neighbor):
 	if label ==  neighborLabel:
-		doubleton = histogram_intersection(superpixels[i],superpixels[neighbor])
+		doubleton = 0 - histogram_intersection(superpixels[i],superpixels[neighbor])
 	else:
-		doubleton = 1 - histogram_intersection(superpixels[i],superpixels[neighbor])
+		doubleton = histogram_intersection(superpixels[i],superpixels[neighbor]) - 1
 	return doubleton
 
 
