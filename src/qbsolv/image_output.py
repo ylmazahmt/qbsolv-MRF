@@ -27,8 +27,16 @@ def main():
 	file_path = rel_path + seg_file_name
 	img=Image.open(img_source_path)
 	img=numpy.array(img)
+	
 	(M,N) = img.shape[0:2]
-	segments = getSegments(img)
+	rgb = img.shape[2:3]
+
+	# is image grayscale
+	isGrayscale = 1
+	if len(rgb) > 0:
+		isGrayscale = 0
+
+	segments = getSegments(img,isGrayscale)
 	counter = 0
 	# Read in image
 	array =[]
@@ -51,11 +59,17 @@ def main():
 
 	seg= numpy.array(seg)
 
-	output_image = numpy.zeros(shape=(M,N))
+	if isGrayscale:
+		output_image = numpy.zeros(shape=(M,N))
+	else:
+		output_image = numpy.zeros(shape=(M,N,3))
 	for i in range(M):
 		for j in range(N):
 			if seg[segments[i,j]] == 1:
-				output_image[i,j] = img[i,j]
+				if isGrayscale:
+					output_image[i,j] = img[i,j]
+				else:
+					output_image[i,j,0:3] = img[i,j,0:3]
 	
 	output_file_name = str(img_name) + "_out." + str(ext)
 	file_path = rel_path + output_file_name

@@ -35,15 +35,25 @@ def main():
 		print("File (",img_source_path,") does not exist!")
 		return
 
+
 	image=Image.open(img_source_path)
+	# image_1 = image.convert('LA')
+	# image_1.save('greyscale.png')
 	img=numpy.array(image)
 	
 	# Create Superpixels and Model 
-	superpixels,segNeighbors,segments,_,segDict = superpixel_extractor(img)
+	superpixels,segNeighbors,segments,uniqueCouplers,segDict = superpixel_extractor(img)
 	foregroundModel, backgroundModel = model_extractor(image,img_model_path)
 	
 	(M,N)=img.shape[0:2]
-	print(M,N)
+	rgb = img.shape[2:3]
+	print(M,N,rgb)
+	
+	# is image grayscale
+	isGrayscale = 1
+	if len(rgb) > 0:
+		isGrayscale = 0
+	
 	seg = init_config(superpixels)
 	while(abs(total_cost - old_total_cost) > threshold):
 		old_total_cost = total_cost
@@ -53,13 +63,20 @@ def main():
 	if(os.path.isdir("result/" + img_name) != 1):
 		call(["mkdir","result/" + img_name])
 
-	output_image = numpy.zeros(shape=(M,N))
+	if isGrayscale:
+		output_image = numpy.zeros(shape=(M,N))
+	else:
+		output_image = numpy.zeros(shape=(M,N,3))
 	output_file_name = str(img_name) + "_out." + str(ext)
 	file_path = rel_path + output_file_name
 	for i in range(M):
 		for j in range(N):
 			if seg[segments[i,j]] == 1:
-				output_image[i,j] = img[i,j]
+				if isGrayscale:
+					output_image[i,j] = img[i,j]
+				else:
+					output_image[i,j,0:3] = img[i,j,0:3]
+				
 	scipy.misc.imsave(file_path,output_image*255)
 
 	if(os.path.isfile(file_path)):

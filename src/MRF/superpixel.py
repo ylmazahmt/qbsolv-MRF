@@ -47,7 +47,11 @@ def superpixel_extractor(image):
 	img = image
 	# # load the image and convert it to a floating point data type
 	# image = img_as_float(io.imread(args["image"]))
-	segments = getSegments(image,1)
+	rgb = image.shape[2:3]
+	isGrayscale = 1
+	if len(rgb) > 0:
+		isGrayscale = 0
+	segments = getSegments(image,isGrayscale)
 	print(segments)
 	# show the output of SLIC
 	fig = plt.figure("Superpixels -- %d segments" % (numSegments))
@@ -57,7 +61,7 @@ def superpixel_extractor(image):
 	 
 	# show the plots
 	plt.show()
-	# return segments
+
 	# loop over the unique segment values
 	for (i, segVal) in enumerate(np.unique(segments)):
 

@@ -65,11 +65,11 @@ def qubo_extractor(superpixels, segNeighbors, uniqueCouplers, foregroundModel, b
 		neighbor_background_node_id = neighbor_foreground_node_id+1
 		# print("Left Coupler:",leftCoupler,"Right Coupler:", rightCoupler)
 		f.write('c coupler between superpixels '+str(leftCoupler)+ " and "+str(rightCoupler)+':\n')
-		f.write('  '+ str(foreground_node_id) +' '+ str(neighbor_foreground_node_id) +' '+ str(doubleton_potential(superpixels,1,1,leftCoupler,rightCoupler)) +'\n' )
-		f.write('  '+ str(background_node_id) +' '+ str(neighbor_foreground_node_id) +' '+ str(doubleton_potential(superpixels,0,1,leftCoupler,rightCoupler)) +'\n' )
-		f.write('  '+ str(foreground_node_id) +' '+ str(neighbor_background_node_id) +' '+ str(doubleton_potential(superpixels,1,0,leftCoupler,rightCoupler)) +'\n' )
-		f.write('  '+ str(background_node_id) +' '+ str(neighbor_background_node_id) +' '+ str(doubleton_potential(superpixels,0,0,leftCoupler,rightCoupler)) +'\n' )
-		coupler_count += 4
+		# f.write('  '+ str(foreground_node_id) +' '+ str(neighbor_foreground_node_id) +' '+ str(doubleton_potential(superpixels,1,1,leftCoupler,rightCoupler)) +'\n' )
+		# f.write('  '+ str(background_node_id) +' '+ str(neighbor_foreground_node_id) +' '+ str(doubleton_potential(superpixels,0,1,leftCoupler,rightCoupler)) +'\n' )
+		# f.write('  '+ str(foreground_node_id) +' '+ str(neighbor_background_node_id) +' '+ str(doubleton_potential(superpixels,1,0,leftCoupler,rightCoupler)) +'\n' )
+		# f.write('  '+ str(background_node_id) +' '+ str(neighbor_background_node_id) +' '+ str(doubleton_potential(superpixels,0,0,leftCoupler,rightCoupler)) +'\n' )
+		# coupler_count += 4
 
 	#to add first line information			
 	f.close()
