@@ -53,5 +53,5 @@ def energy(superpixels,seg,label,i,segNeighbors,foregroundModel,backgroundModel)
 	for neighbor in segNeighbors[i]:
 		doubleton += doubleton_potential(superpixels,label,seg[neighbor],i,neighbor)
 	# print("singleton: ",singleton,"doubleton: ",doubleton)
-	return  singleton + 0*doubleton
+	return  singleton + 0.01*doubleton
 

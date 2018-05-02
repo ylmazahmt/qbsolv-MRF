@@ -1,4 +1,5 @@
 # import the necessary packages
+from PIL import Image
 from skimage.segmentation import slic
 from skimage.segmentation import mark_boundaries
 from skimage.util import img_as_float
@@ -9,24 +10,36 @@ import numpy as np
 import cv2
 import scipy
 
-numSegments = 100
+numSegments = 10
 
-def model_extractor(image,img_model_path):
-	counter = 0
-	img_model = []
-	with open(img_model_path, "r") as ins:
-		for line in ins:
-			img_model.append(int(line))
-	print("Image Model Indices: ",img_model)
-	foregroundModel = image.crop((img_model[0], img_model[1], img_model[2], img_model[3]))
-	# scipy.misc.imsave("fg.png",foregroundModel)
-	backgroundModel = image.crop((img_model[4], img_model[5], img_model[6], img_model[7]))
-	# scipy.misc.imsave("bg.png",backgroundModel)
+# def model_extractor(image,img_model_path):
+# 	img_model_path = img_model_path + ".txt"
+# 	counter = 0
+# 	img_model = []
+# 	with open(img_model_path, "r") as ins:
+# 		for line in ins:
+# 			img_model.append(int(line))
+# 	print("Image Model Indices: ",img_model)
+# 	foregroundModel = image.crop((img_model[0], img_model[1], img_model[2], img_model[3]))
+# 	scipy.misc.imsave("fg.png",foregroundModel)
+# 	backgroundModel = image.crop((img_model[4], img_model[5], img_model[6], img_model[7]))
+# 	scipy.misc.imsave("bg.png",backgroundModel)
 
-	foregroundModel = np.array(foregroundModel)
-	backgroundModel = np.array(backgroundModel)
-	print("Foreground Model:", foregroundModel)
-	print("Background Model:", backgroundModel)
+# 	foregroundModel = np.array(foregroundModel)
+# 	backgroundModel = np.array(backgroundModel)
+# 	print("Foreground Model:", foregroundModel)
+# 	print("Background Model:", backgroundModel)
+# 	return foregroundModel, backgroundModel
+
+def model_extractor(image, img_model_path):
+	fg_path = img_model_path + "_fg.png"
+	bg_path = img_model_path + "_bg.png"
+	fg_img = Image.open(fg_path)
+	bg_img = Image.open(bg_path)
+
+	foregroundModel = np.array(fg_img)
+	backgroundModel = np.array(bg_img)
+
 	return foregroundModel, backgroundModel
 
 def getSegments(image, isGrayscale):
@@ -40,17 +53,15 @@ def superpixel_extractor(image):
 	segDict = dict()
 	segNeighbors = dict()
 	superpixels = dict()
-	# # construct the argument parser and parse the arguments
-	# ap = argparse.ArgumentParser()
-	# ap.add_argument("-i", "--image", required = True, help = "Path to the image")
-	# args = vars(ap.parse_args())
+	
 	img = image
-	# # load the image and convert it to a floating point data type
-	# image = img_as_float(io.imread(args["image"]))
+	
+	# if photo is grayscale
 	rgb = image.shape[2:3]
 	isGrayscale = 1
 	if len(rgb) > 0:
 		isGrayscale = 0
+
 	segments = getSegments(image,isGrayscale)
 	print(segments)
 	# show the output of SLIC
@@ -74,10 +85,10 @@ def superpixel_extractor(image):
 		# mask[segments == segVal] = 255
 		
 		segDict[segVal] = [(j,k) for j in range(M) for k in range(N) if segments[j,k] == segVal]
+		
 		superpixels[segVal] = [img[j,k] for j in range(M) for k in range(N) if segments[j,k] == segVal]
 		superpixels[segVal] = np.array(superpixels[segVal])
-		# print("\n",segDict[segVal])
-		# print("segVal: ",segVal,"segDict: ", segDict[segVal])
+		
 		segNeighbors[segVal] = []
 		for pair in segDict[segVal]:
 			if segments[pair[0]-1,pair[1]-1] != segVal and pair[0]-1 >= 0 and pair[1]-1 >= 0:
@@ -110,19 +121,7 @@ def superpixel_extractor(image):
 	for i,_ in enumerate(segNeighbors):
 		uniqueCouplers.append([(i,neighbor) for neighbor in segNeighbors[i] if neighbor > i])
 	uniqueCouplers = [item for sublist in uniqueCouplers for item in sublist]
+
 	# print(uniqueCouplers)
+
 	return superpixels,segNeighbors,segments,uniqueCouplers,segDict
-
-def main():
-	# construct the argument parser and parse the arguments
-	ap = argparse.ArgumentParser()
-	ap.add_argument("-i", "--image", required = True, help = "Path to the image")
-	args = vars(ap.parse_args())
-	print("hello")
-	# load the image and convert it to a floating point data type
-	image = img_as_float(io.imread(args["image"]))
-	# print(segNeighbors)
-
-
-if __name__=="__main__":
-	main()

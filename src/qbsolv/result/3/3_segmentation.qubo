@@ -1,608 +1,112 @@
-p  qubo  0  186 186 93
+p  qubo  0  18 18 69
 c for superpixel - 0:
-  0 0 -0.023015873015873017
-  1 1 -0.7921
+  0 0 -0.03218253968253968
+  1 1 -1.0
   0 1 10
 c for superpixel - 1:
-  2 2 -0.023015873015873017
-  3 3 -0.7861
+  2 2 -0.12831349206349207
+  3 3 -1.0
   2 3 10
 c for superpixel - 2:
-  4 4 -0.023015873015873017
-  5 5 -0.8647
+  4 4 -0.08751984126984128
+  5 5 -1.0
   4 5 10
 c for superpixel - 3:
-  6 6 -0.023015873015873017
-  7 7 -0.8159
+  6 6 -0.9072619047619047
+  7 7 -0.12283730158730159
   6 7 10
 c for superpixel - 4:
-  8 8 -0.023015873015873017
-  9 9 -0.9602
+  8 8 -0.40674603174603174
+  9 9 0.0
   8 9 10
 c for superpixel - 5:
-  10 10 -0.023015873015873017
-  11 11 -0.9368
+  10 10 -0.12944444444444445
+  11 11 -1.0
   10 11 10
 c for superpixel - 6:
-  12 12 -0.027023809523809523
+  12 12 -0.04880952380952381
   13 13 -1.0
   12 13 10
 c for superpixel - 7:
-  14 14 -0.023015873015873017
-  15 15 -0.981
+  14 14 -0.06319444444444444
+  15 15 -1.0
   14 15 10
 c for superpixel - 8:
-  16 16 -0.023015873015873017
-  17 17 -0.8665
+  16 16 -0.10948412698412699
+  17 17 -1.0
   16 17 10
-c for superpixel - 9:
-  18 18 -0.023015873015873017
-  19 19 -0.8477
-  18 19 10
-c for superpixel - 10:
-  20 20 -0.023015873015873017
-  21 21 -0.8114
-  20 21 10
-c for superpixel - 11:
-  22 22 -0.023015873015873017
-  23 23 -0.7937
-  22 23 10
-c for superpixel - 12:
-  24 24 -0.023015873015873017
-  25 25 -0.8955
-  24 25 10
-c for superpixel - 13:
-  26 26 -0.03986111111111111
-  27 27 -0.4092
-  26 27 10
-c for superpixel - 14:
-  28 28 -0.023015873015873017
-  29 29 -0.8653
-  28 29 10
-c for superpixel - 15:
-  30 30 -0.05057539682539682
-  31 31 -0.7446
-  30 31 10
-c for superpixel - 16:
-  32 32 -0.029682539682539682
-  33 33 -0.9358
-  32 33 10
-c for superpixel - 17:
-  34 34 -0.15857142857142856
-  35 35 -0.001
-  34 35 10
-c for superpixel - 18:
-  36 36 -0.21234126984126983
-  37 37 -0.0092
-  36 37 10
-c for superpixel - 19:
-  38 38 -0.11472222222222223
-  39 39 -0.0026
-  38 39 10
-c for superpixel - 20:
-  40 40 -0.023015873015873017
-  41 41 -0.9063
-  40 41 10
-c for superpixel - 21:
-  42 42 -0.030714285714285715
-  43 43 -0.8747
-  42 43 10
-c for superpixel - 22:
-  44 44 -0.20005291005291007
-  45 45 0.0
-  44 45 10
-c for superpixel - 23:
-  46 46 -0.023015873015873017
-  47 47 -0.8703
-  46 47 10
-c for superpixel - 24:
-  48 48 -0.023015873015873017
-  49 49 -0.8083
-  48 49 10
-c for superpixel - 25:
-  50 50 -0.11511904761904762
-  51 51 -0.9109
-  50 51 10
-c for superpixel - 26:
-  52 52 -0.09297619047619048
-  53 53 0.0
-  52 53 10
-c for superpixel - 27:
-  54 54 -0.03470238095238095
-  55 55 -0.6481
-  54 55 10
-c for superpixel - 28:
-  56 56 -0.15047619047619049
-  57 57 0.0
-  56 57 10
-c for superpixel - 29:
-  58 58 -0.029027777777777777
-  59 59 -0.8575
-  58 59 10
-c for superpixel - 30:
-  60 60 -0.023015873015873017
-  61 61 -0.9308
-  60 61 10
-c for superpixel - 31:
-  62 62 -0.10436507936507937
-  63 63 0.0
-  62 63 10
-c for superpixel - 32:
-  64 64 -0.023015873015873017
-  65 65 -0.877
-  64 65 10
-c for superpixel - 33:
-  66 66 -0.1292526455026455
-  67 67 -0.0009
-  66 67 10
-c for superpixel - 34:
-  68 68 -0.21024470899470898
-  69 69 0.0
-  68 69 10
-c for superpixel - 35:
-  70 70 -0.16178571428571428
-  71 71 -0.0109
-  70 71 10
-c for superpixel - 36:
-  72 72 -0.08982142857142857
-  73 73 -0.5311
-  72 73 10
-c for superpixel - 37:
-  74 74 -0.17095238095238094
-  75 75 0.0
-  74 75 10
-c for superpixel - 38:
-  76 76 -0.029523809523809525
-  77 77 -0.8051
-  76 77 10
-c for superpixel - 39:
-  78 78 -0.023015873015873017
-  79 79 -0.7881
-  78 79 10
-c for superpixel - 40:
-  80 80 -0.023015873015873017
-  81 81 -1.0
-  80 81 10
-c for superpixel - 41:
-  82 82 -0.15823412698412698
-  83 83 0.0
-  82 83 10
-c for superpixel - 42:
-  84 84 -0.15619047619047619
-  85 85 0.0
-  84 85 10
-c for superpixel - 43:
-  86 86 -0.02878968253968254
-  87 87 -1.0
-  86 87 10
-c for superpixel - 44:
-  88 88 -0.16708333333333333
-  89 89 -0.0025
-  88 89 10
-c for superpixel - 45:
-  90 90 -0.19751984126984126
-  91 91 0.0
-  90 91 10
-c for superpixel - 46:
-  92 92 -0.044186507936507934
-  93 93 -0.7778
-  92 93 10
-c for superpixel - 47:
-  94 94 -0.14976190476190476
-  95 95 0.0
-  94 95 10
-c for superpixel - 48:
-  96 96 -0.023015873015873017
-  97 97 -0.7993
-  96 97 10
-c for superpixel - 49:
-  98 98 -0.023015873015873017
-  99 99 -0.977
-  98 99 10
-c for superpixel - 50:
-  100 100 -0.1407936507936508
-  101 101 0.0
-  100 101 10
-c for superpixel - 51:
-  102 102 -0.18266534391534392
-  103 103 -0.0022
-  102 103 10
-c for superpixel - 52:
-  104 104 -0.03267857142857143
-  105 105 -0.9064
-  104 105 10
-c for superpixel - 53:
-  106 106 -0.023015873015873017
-  107 107 -0.9096
-  106 107 10
-c for superpixel - 54:
-  108 108 -0.2425793650793651
-  109 109 -0.2198
-  108 109 10
-c for superpixel - 55:
-  110 110 -0.1707142857142857
-  111 111 -0.0077
-  110 111 10
-c for superpixel - 56:
-  112 112 -0.023015873015873017
-  113 113 -0.8301
-  112 113 10
-c for superpixel - 57:
-  114 114 -0.023015873015873017
-  115 115 -0.828
-  114 115 10
-c for superpixel - 58:
-  116 116 -0.03378968253968254
-  117 117 -0.7859
-  116 117 10
-c for superpixel - 59:
-  118 118 -0.28371031746031744
-  119 119 -0.361
-  118 119 10
-c for superpixel - 60:
-  120 120 -0.13170634920634922
-  121 121 -0.0001
-  120 121 10
-c for superpixel - 61:
-  122 122 -0.03117063492063492
-  123 123 -0.9033
-  122 123 10
-c for superpixel - 62:
-  124 124 -0.023015873015873017
-  125 125 -0.9175
-  124 125 10
-c for superpixel - 63:
-  126 126 -0.023015873015873017
-  127 127 -0.8753
-  126 127 10
-c for superpixel - 64:
-  128 128 -0.023015873015873017
-  129 129 -0.8546
-  128 129 10
-c for superpixel - 65:
-  130 130 -0.03763888888888889
-  131 131 -0.7848
-  130 131 10
-c for superpixel - 66:
-  132 132 -0.14434523809523808
-  133 133 -0.0113
-  132 133 10
-c for superpixel - 67:
-  134 134 -0.1226984126984127
-  135 135 0.0
-  134 135 10
-c for superpixel - 68:
-  136 136 -0.09551587301587301
-  137 137 0.0
-  136 137 10
-c for superpixel - 69:
-  138 138 -0.08949735449735449
-  139 139 0.0
-  138 139 10
-c for superpixel - 70:
-  140 140 -0.06640873015873015
-  141 141 -0.3914
-  140 141 10
-c for superpixel - 71:
-  142 142 -0.10234126984126984
-  143 143 -0.0058
-  142 143 10
-c for superpixel - 72:
-  144 144 -0.023015873015873017
-  145 145 -0.8971
-  144 145 10
-c for superpixel - 73:
-  146 146 -0.0289484126984127
-  147 147 -0.792
-  146 147 10
-c for superpixel - 74:
-  148 148 -0.023015873015873017
-  149 149 -0.9212
-  148 149 10
-c for superpixel - 75:
-  150 150 -0.023015873015873017
-  151 151 -0.8588
-  150 151 10
-c for superpixel - 76:
-  152 152 -0.030634920634920636
-  153 153 -0.8149
-  152 153 10
-c for superpixel - 77:
-  154 154 -0.09942460317460318
-  155 155 0.0
-  154 155 10
-c for superpixel - 78:
-  156 156 -0.1402579365079365
-  157 157 -0.0029
-  156 157 10
-c for superpixel - 79:
-  158 158 -0.023015873015873017
-  159 159 -0.8188
-  158 159 10
-c for superpixel - 80:
-  160 160 -0.037797619047619045
-  161 161 -0.7237
-  160 161 10
-c for superpixel - 81:
-  162 162 -0.02845238095238095
-  163 163 -0.8192
-  162 163 10
-c for superpixel - 82:
-  164 164 -0.023015873015873017
-  165 165 -0.8115
-  164 165 10
-c for superpixel - 83:
-  166 166 -0.023015873015873017
-  167 167 -0.8884
-  166 167 10
-c for superpixel - 84:
-  168 168 -0.02753968253968254
-  169 169 -1.0
-  168 169 10
-c for superpixel - 85:
-  170 170 -0.03297619047619048
-  171 171 -0.9472
-  170 171 10
-c for superpixel - 86:
-  172 172 -0.03238095238095238
-  173 173 -0.9437
-  172 173 10
-c for superpixel - 87:
-  174 174 -0.02734126984126984
-  175 175 -0.8611
-  174 175 10
-c for superpixel - 88:
-  176 176 -0.023015873015873017
-  177 177 -0.8023
-  176 177 10
-c for superpixel - 89:
-  178 178 -0.023015873015873017
-  179 179 -0.7517
-  178 179 10
-c for superpixel - 90:
-  180 180 -0.023015873015873017
-  181 181 -0.8404
-  180 181 10
-c for superpixel - 91:
-  182 182 -0.023015873015873017
-  183 183 -0.7748
-  182 183 10
-c for superpixel - 92:
-  184 184 -0.023015873015873017
-  185 185 -0.8386
-  184 185 10
 c coupler between superpixels 0 and 1:
-c coupler between superpixels 0 and 11:
+  0 2 -0.4628796728971963
+  1 2 -0.07424065420560744
+  0 3 -0.07424065420560744
+  1 3 -0.4628796728971963
+c coupler between superpixels 0 and 3:
+  0 6 -0.021551389032859955
+  1 6 -0.9568972219342801
+  0 7 -0.9568972219342801
+  1 7 -0.021551389032859955
+c coupler between superpixels 0 and 6:
+  0 12 -0.49348920254275114
+  1 12 -0.013021594914497725
+  0 13 -0.013021594914497725
+  1 13 -0.49348920254275114
 c coupler between superpixels 1 and 2:
-c coupler between superpixels 1 and 10:
+  2 4 -0.48795813843329977
+  3 4 -0.02408372313340046
+  2 5 -0.02408372313340046
+  3 5 -0.48795813843329977
+c coupler between superpixels 1 and 3:
+  2 6 -0.03703871669949207
+  3 6 -0.9259225666010159
+  2 7 -0.9259225666010159
+  3 7 -0.03703871669949207
 c coupler between superpixels 2 and 3:
-c coupler between superpixels 2 and 10:
-c coupler between superpixels 2 and 12:
-c coupler between superpixels 2 and 14:
+  4 6 -0.031492951176531565
+  5 6 -0.9370140976469369
+  4 7 -0.9370140976469369
+  5 7 -0.031492951176531565
+c coupler between superpixels 2 and 5:
+  4 10 -0.3918324890398561
+  5 10 -0.21633502192028775
+  4 11 -0.21633502192028775
+  5 11 -0.3918324890398561
 c coupler between superpixels 3 and 4:
-c coupler between superpixels 3 and 12:
-c coupler between superpixels 4 and 5:
-c coupler between superpixels 4 and 12:
-c coupler between superpixels 4 and 16:
-c coupler between superpixels 5 and 6:
-c coupler between superpixels 5 and 13:
-c coupler between superpixels 5 and 16:
-c coupler between superpixels 6 and 7:
-c coupler between superpixels 6 and 13:
-c coupler between superpixels 6 and 15:
-c coupler between superpixels 6 and 17:
+  6 8 -0.21232065703452707
+  7 8 -0.5753586859309459
+  6 9 -0.5753586859309459
+  7 9 -0.21232065703452707
+c coupler between superpixels 3 and 5:
+  6 10 -0.0583796617341122
+  7 10 -0.8832406765317756
+  6 11 -0.8832406765317756
+  7 11 -0.0583796617341122
+c coupler between superpixels 3 and 6:
+  6 12 -0.05765057181117148
+  7 12 -0.884698856377657
+  6 13 -0.884698856377657
+  7 13 -0.05765057181117148
+c coupler between superpixels 3 and 7:
+  6 14 -0.04143529666139225
+  7 14 -0.9171294066772155
+  6 15 -0.9171294066772155
+  7 15 -0.04143529666139225
+c coupler between superpixels 3 and 8:
+  6 16 -0.07131608548931384
+  7 16 -0.8573678290213723
+  6 17 -0.8573678290213723
+  7 17 -0.07131608548931384
+c coupler between superpixels 5 and 7:
+  10 14 -0.4009130310863006
+  11 14 -0.19817393782739878
+  10 15 -0.19817393782739878
+  11 15 -0.4009130310863006
+c coupler between superpixels 6 and 8:
+  12 16 -0.3653937007874016
+  13 16 -0.26921259842519685
+  12 17 -0.26921259842519685
+  13 17 -0.3653937007874016
 c coupler between superpixels 7 and 8:
-c coupler between superpixels 7 and 9:
-c coupler between superpixels 7 and 15:
-c coupler between superpixels 8 and 9:
-c coupler between superpixels 9 and 15:
-c coupler between superpixels 9 and 20:
-c coupler between superpixels 10 and 11:
-c coupler between superpixels 10 and 14:
-c coupler between superpixels 10 and 23:
-c coupler between superpixels 10 and 24:
-c coupler between superpixels 11 and 24:
-c coupler between superpixels 12 and 14:
-c coupler between superpixels 12 and 16:
-c coupler between superpixels 12 and 21:
-c coupler between superpixels 12 and 25:
-c coupler between superpixels 13 and 16:
-c coupler between superpixels 13 and 17:
-c coupler between superpixels 13 and 18:
-c coupler between superpixels 14 and 23:
-c coupler between superpixels 14 and 25:
-c coupler between superpixels 15 and 17:
-c coupler between superpixels 15 and 19:
-c coupler between superpixels 15 and 20:
-c coupler between superpixels 15 and 27:
-c coupler between superpixels 16 and 18:
-c coupler between superpixels 16 and 21:
-c coupler between superpixels 16 and 25:
-c coupler between superpixels 17 and 18:
-c coupler between superpixels 17 and 19:
-c coupler between superpixels 18 and 19:
-c coupler between superpixels 18 and 22:
-c coupler between superpixels 18 and 25:
-c coupler between superpixels 18 and 26:
-c coupler between superpixels 18 and 28:
-c coupler between superpixels 18 and 35:
-c coupler between superpixels 19 and 27:
-c coupler between superpixels 19 and 28:
-c coupler between superpixels 19 and 35:
-c coupler between superpixels 20 and 27:
-c coupler between superpixels 20 and 32:
-c coupler between superpixels 21 and 25:
-c coupler between superpixels 22 and 25:
-c coupler between superpixels 22 and 26:
-c coupler between superpixels 22 and 31:
-c coupler between superpixels 22 and 34:
-c coupler between superpixels 23 and 24:
-c coupler between superpixels 23 and 25:
-c coupler between superpixels 23 and 29:
-c coupler between superpixels 23 and 30:
-c coupler between superpixels 24 and 30:
-c coupler between superpixels 25 and 29:
-c coupler between superpixels 25 and 31:
-c coupler between superpixels 25 and 33:
-c coupler between superpixels 26 and 34:
-c coupler between superpixels 26 and 35:
-c coupler between superpixels 26 and 37:
-c coupler between superpixels 27 and 32:
-c coupler between superpixels 27 and 35:
-c coupler between superpixels 27 and 36:
-c coupler between superpixels 28 and 35:
-c coupler between superpixels 29 and 30:
-c coupler between superpixels 29 and 38:
-c coupler between superpixels 30 and 38:
-c coupler between superpixels 30 and 39:
-c coupler between superpixels 31 and 33:
-c coupler between superpixels 31 and 34:
-c coupler between superpixels 31 and 41:
-c coupler between superpixels 32 and 36:
-c coupler between superpixels 32 and 40:
-c coupler between superpixels 33 and 38:
-c coupler between superpixels 33 and 41:
-c coupler between superpixels 33 and 46:
-c coupler between superpixels 33 and 50:
-c coupler between superpixels 33 and 51:
-c coupler between superpixels 34 and 37:
-c coupler between superpixels 34 and 41:
-c coupler between superpixels 34 and 42:
-c coupler between superpixels 34 and 45:
-c coupler between superpixels 35 and 36:
-c coupler between superpixels 35 and 37:
-c coupler between superpixels 35 and 43:
-c coupler between superpixels 35 and 44:
-c coupler between superpixels 36 and 40:
-c coupler between superpixels 36 and 43:
-c coupler between superpixels 37 and 44:
-c coupler between superpixels 37 and 45:
-c coupler between superpixels 37 and 47:
-c coupler between superpixels 38 and 39:
-c coupler between superpixels 38 and 46:
-c coupler between superpixels 38 and 48:
-c coupler between superpixels 39 and 48:
-c coupler between superpixels 40 and 43:
-c coupler between superpixels 40 and 49:
-c coupler between superpixels 41 and 42:
-c coupler between superpixels 41 and 50:
-c coupler between superpixels 42 and 45:
-c coupler between superpixels 42 and 50:
-c coupler between superpixels 43 and 44:
-c coupler between superpixels 43 and 49:
-c coupler between superpixels 43 and 52:
-c coupler between superpixels 43 and 53:
-c coupler between superpixels 44 and 47:
-c coupler between superpixels 44 and 52:
-c coupler between superpixels 44 and 54:
-c coupler between superpixels 45 and 47:
-c coupler between superpixels 45 and 50:
-c coupler between superpixels 45 and 59:
-c coupler between superpixels 46 and 48:
-c coupler between superpixels 46 and 51:
-c coupler between superpixels 46 and 57:
-c coupler between superpixels 46 and 58:
-c coupler between superpixels 47 and 54:
-c coupler between superpixels 47 and 59:
-c coupler between superpixels 48 and 57:
-c coupler between superpixels 49 and 53:
-c coupler between superpixels 49 and 56:
-c coupler between superpixels 50 and 51:
-c coupler between superpixels 50 and 55:
-c coupler between superpixels 50 and 59:
-c coupler between superpixels 51 and 55:
-c coupler between superpixels 51 and 58:
-c coupler between superpixels 51 and 60:
-c coupler between superpixels 51 and 65:
-c coupler between superpixels 51 and 69:
-c coupler between superpixels 51 and 71:
-c coupler between superpixels 52 and 53:
-c coupler between superpixels 52 and 54:
-c coupler between superpixels 52 and 61:
-c coupler between superpixels 52 and 62:
-c coupler between superpixels 53 and 56:
-c coupler between superpixels 53 and 62:
-c coupler between superpixels 54 and 59:
-c coupler between superpixels 54 and 61:
-c coupler between superpixels 54 and 66:
-c coupler between superpixels 54 and 67:
-c coupler between superpixels 55 and 59:
-c coupler between superpixels 55 and 60:
-c coupler between superpixels 55 and 68:
-c coupler between superpixels 55 and 70:
-c coupler between superpixels 56 and 63:
-c coupler between superpixels 57 and 58:
-c coupler between superpixels 57 and 64:
-c coupler between superpixels 58 and 64:
-c coupler between superpixels 58 and 65:
-c coupler between superpixels 59 and 67:
-c coupler between superpixels 59 and 68:
-c coupler between superpixels 59 and 77:
-c coupler between superpixels 60 and 70:
-c coupler between superpixels 60 and 71:
-c coupler between superpixels 61 and 62:
-c coupler between superpixels 61 and 66:
-c coupler between superpixels 61 and 72:
-c coupler between superpixels 61 and 73:
-c coupler between superpixels 62 and 63:
-c coupler between superpixels 62 and 72:
-c coupler between superpixels 62 and 74:
-c coupler between superpixels 63 and 74:
-c coupler between superpixels 64 and 65:
-c coupler between superpixels 64 and 75:
-c coupler between superpixels 65 and 71:
-c coupler between superpixels 65 and 75:
-c coupler between superpixels 65 and 76:
-c coupler between superpixels 66 and 67:
-c coupler between superpixels 66 and 73:
-c coupler between superpixels 66 and 78:
-c coupler between superpixels 67 and 77:
-c coupler between superpixels 67 and 78:
-c coupler between superpixels 68 and 70:
-c coupler between superpixels 68 and 77:
-c coupler between superpixels 68 and 78:
-c coupler between superpixels 69 and 71:
-c coupler between superpixels 70 and 71:
-c coupler between superpixels 70 and 78:
-c coupler between superpixels 70 and 84:
-c coupler between superpixels 71 and 76:
-c coupler between superpixels 71 and 81:
-c coupler between superpixels 71 and 84:
-c coupler between superpixels 71 and 87:
-c coupler between superpixels 72 and 73:
-c coupler between superpixels 72 and 74:
-c coupler between superpixels 72 and 79:
-c coupler between superpixels 72 and 80:
-c coupler between superpixels 73 and 78:
-c coupler between superpixels 73 and 80:
-c coupler between superpixels 74 and 79:
-c coupler between superpixels 74 and 82:
-c coupler between superpixels 75 and 76:
-c coupler between superpixels 75 and 83:
-c coupler between superpixels 76 and 81:
-c coupler between superpixels 76 and 83:
-c coupler between superpixels 77 and 78:
-c coupler between superpixels 78 and 80:
-c coupler between superpixels 78 and 85:
-c coupler between superpixels 78 and 86:
-c coupler between superpixels 79 and 80:
-c coupler between superpixels 79 and 82:
-c coupler between superpixels 79 and 90:
-c coupler between superpixels 79 and 92:
-c coupler between superpixels 80 and 86:
-c coupler between superpixels 80 and 90:
-c coupler between superpixels 80 and 91:
-c coupler between superpixels 81 and 83:
-c coupler between superpixels 81 and 87:
-c coupler between superpixels 81 and 88:
-c coupler between superpixels 82 and 92:
-c coupler between superpixels 83 and 88:
-c coupler between superpixels 83 and 89:
-c coupler between superpixels 84 and 85:
-c coupler between superpixels 84 and 87:
-c coupler between superpixels 85 and 86:
-c coupler between superpixels 86 and 91:
-c coupler between superpixels 87 and 88:
-c coupler between superpixels 88 and 89:
-c coupler between superpixels 90 and 91:
-c coupler between superpixels 90 and 92:
+  14 16 -0.4761079865016873
+  15 16 -0.04778402699662543
+  14 17 -0.04778402699662543
+  15 17 -0.4761079865016873

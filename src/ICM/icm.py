@@ -30,7 +30,7 @@ def main():
 	img_name, ext = file_name.split(".")
 	rel_path = "result/" +img_name + "/"
 	img_source_path = "../../img/" + file_name
-	img_model_path = "../../img/" + img_name + "_model.txt"
+	img_model_path = "../../img/" + img_name + "_model"
 	if os.path.isfile(img_source_path) != 1:
 		print("File (",img_source_path,") does not exist!")
 		return
