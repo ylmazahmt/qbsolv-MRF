@@ -17,80 +17,108 @@ src_folder = '/'.join(args[:-1])
 sys.path.insert(0, (src_folder))
 
 from MRF.mrf import *
+from MRF.superpixel import *
 
 def main():
 	# Read in image
-	img_source_path = "../../img/" + sys.argv[1]
-	args = img_source_path.split("/")
-	file_name = args[-1]
-	global total_cost
-	old_total_cost = 0
-	img=Image.open(img_source_path)
-	img=numpy.array(img)
 	
-	qubo_extractor(img,file_name)
-	
-
-def qubo_extractor(img,file_name):
+	file_name = sys.argv[1]
 	img_name, ext = file_name.split(".")
-	(M,N) = img.shape[0:2]
-	coupler_count = 0
-	Q = {}
-	for i in range(M):
-		for j in range(N):
-			foreground_node_id = (i*N*2)+(j*2)
-			background_node_id = foreground_node_id+1
-			#foreground qubit
-			Q[(foreground_node_id,foreground_node_id)] = unary_potential(img,1,i,j)
-			#background qubit
-			Q[(background_node_id,background_node_id)] = unary_potential(img,0,i,j)
-			#for qubits of same pixel - high cost should be given here to ensure both qubits are not open
-			Q[(foreground_node_id,background_node_id)] = 10
-			coupler_count += 1
-			#for neighbors
-			neighbors = find_neighbors(img,i,j)
-			for k in neighbors:
-				neighbor_foreground_node_id = (k[0]*N*2)+(k[1]*2)
-				neighbor_background_node_id = neighbor_foreground_node_id+1
-				#f.write('  '+ str(foreground_node_id) +' '+ str(neighbor_foreground_node_id) +' '+ str(f_1(img,i,j,k)) +'\n' )
-				#f.write('  '+ str(background_node_id) +' '+ str(neighbor_foreground_node_id) +' '+ str(f_2(img,i,j,k)) +'\n' )
-				#f.write('  '+ str(foreground_node_id) +' '+ str(neighbor_background_node_id) +' '+ str(f_2(img,i,j,k)) +'\n' )
-				#f.write('  '+ str(background_node_id) +' '+ str(neighbor_background_node_id) +' '+ str(f_1(img,i,j,k)) +'\n' )
-				#coupler_count += 1
+	rel_path = "result/" +img_name + "/"
+	img_source_path = "../../img/" + file_name
+	img_model_path = "../../img/" + img_name + "_model"
+	
+	if os.path.isfile(img_source_path) != 1:
+		print("File (",img_source_path,") does not exist!")
+		return
 
-	#print(Q)			
+	image=Image.open(img_source_path)
+	img=numpy.array(image)
+
+	# Create Superpixels and Model 
+	superpixels,segNeighbors,segments,uniqueCouplers,segDict = superpixel_extractor(img)
+	foregroundModel, backgroundModel = model_extractor(image,img_model_path)
+
+	qubo_extractor(superpixels, segNeighbors, uniqueCouplers, foregroundModel, backgroundModel, file_name, rel_path, img)
+	#scipy.misc.imsave('out.png',seg*255)
+
+def qubo_extractor(superpixels, segNeighbors, uniqueCouplers, foregroundModel, backgroundModel, file_name, rel_path, img):
+	Q = {}
+	N = len(superpixels)
+	for i in range(N):
+		foreground_node_id = (i)*2
+		background_node_id = foreground_node_id+1
+		Q[(foreground_node_id,foreground_node_id)] = unary_potential(superpixels,1,i,foregroundModel,backgroundModel)
+		#background qubit
+		Q[(background_node_id,background_node_id)] = unary_potential(superpixels,0,i,foregroundModel,backgroundModel)
+		#for qubits of same pixel - high cost should be given here to ensure both qubits are not open
+		Q[(foreground_node_id,background_node_id)] = 10
+		
+		#for neighbors
+	for coupler in uniqueCouplers:
+		leftCoupler = coupler[0]
+		rightCoupler = coupler[1]
+		foreground_node_id = leftCoupler*2
+		background_node_id = foreground_node_id+1
+		neighbor_foreground_node_id = rightCoupler*2
+		neighbor_background_node_id = neighbor_foreground_node_id+1
+		
+		Q[(foreground_node_id, neighbor_foreground_node_id)] = doubleton_potential(superpixels,1,1,leftCoupler,rightCoupler)
+		Q[(background_node_id, neighbor_foreground_node_id)] = doubleton_potential(superpixels,0,1,leftCoupler,rightCoupler)
+		Q[(foreground_node_id, neighbor_background_node_id)] = doubleton_potential(superpixels,1,0,leftCoupler,rightCoupler)
+		Q[(background_node_id, neighbor_background_node_id)] = doubleton_potential(superpixels,0,0,leftCoupler,rightCoupler)
+		
 	
-	
+
 	response = QBSolv().sample_qubo(Q)
 	result = list(response.samples())
-
-	counter = 1
-	out = []
 	array = result[0]
+
+	(M,N) = img.shape[0:2]
+	rgb = img.shape[2:3]
+
+	# is image grayscale
+	isGrayscale = 1
+	if len(rgb) > 0:
+		isGrayscale = 0
+
+	segments = getSegments(img,isGrayscale)
+	counter = 0
+	seg = []
 	for i in array:
 		mode = counter
-		if(counter > (N*M*2)):
-			continue
-		if(mode%2 == 1):
+		if(mode%2 == 0):
 			if array[i] == 1:
-				out.append(int(255))
+				seg.append(1)
 			else:
-				out.append(0)
+				seg.append(0)
 		counter += 1
 
-		
-	out=numpy.array(out)
-	out = out.reshape(M,N)
+	seg= numpy.array(seg)
+	if isGrayscale:
+		output_image = numpy.zeros(shape=(M,N))
+	else:
+		output_image = numpy.zeros(shape=(M,N,3))
+	for i in range(M):
+		for j in range(N):
+			if seg[segments[i,j]] == 1:
+				if isGrayscale:
+					output_image[i,j] = img[i,j]
+				else:
+					output_image[i,j,0:3] = img[i,j,0:3]
+	
 	img_name, ext = file_name.split(".")
 
 	if(os.path.isdir("result/" + img_name) != 1):
 		call(["mkdir","result/" + img_name])
 
-	rel_path = "result/" +img_name + "/"
 	output_file_name = str(img_name) + "_out_python." + str(ext)
 	file_path = rel_path + output_file_name
-	scipy.misc.imsave(file_path,out)
+	scipy.misc.imsave(file_path,output_image*255)
 
+	if(os.path.isfile(file_path)):
+		call(["open", file_path])
+		return
 
 if __name__=="__main__":
 	main()	

@@ -11,12 +11,9 @@ from random import randint
 import sys,os
 from subprocess import call
 
-binsForHistogramIntersection = 255
+binsForHistogramIntersection = 25
 
 offset = -0.5
-# k_1 = 1
-# k_2 = 1
-# k_3 = k_2 + offset
 
 def histogram_intersection(segment_1, segment_2):
 	# print("segment 1:",segment_1)
