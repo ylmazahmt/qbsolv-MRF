@@ -18,11 +18,6 @@ sys.path.insert(0, (src_folder))
 from MRF.mrf import *
 from MRF.superpixel import *
 
-offset = - 0.5
-k_1 = 1
-k_2 = 1
-k_3 = k_2 + offset
-
 def main():
 	# Read in image
 	img_source_path = sys.argv[1]
@@ -53,9 +48,9 @@ def qubo_extractor(superpixels, segNeighbors, uniqueCouplers, foregroundModel, b
 		foreground_node_id = (i)*2
 		background_node_id = foreground_node_id+1
 		#foreground qubit
-		f.write('  '+ str(foreground_node_id) +' '+ str(foreground_node_id) +' '+ str(unary_potential(superpixels,1,i,foregroundModel,backgroundModel)*k_1) +'\n' )
+		f.write('  '+ str(foreground_node_id) +' '+ str(foreground_node_id) +' '+ str(unary_potential(superpixels,1,i,foregroundModel,backgroundModel)) +'\n' )
 		#background qubit
-		f.write('  '+ str(background_node_id) +' '+ str(background_node_id) +' '+ str(unary_potential(superpixels,0,i,foregroundModel,backgroundModel)*k_1) +'\n' )
+		f.write('  '+ str(background_node_id) +' '+ str(background_node_id) +' '+ str(unary_potential(superpixels,0,i,foregroundModel,backgroundModel)) +'\n' )
 		#for qubits of same pixel - high cost should be given here to ensure both qubits are not open
 		f.write('  '+ str(foreground_node_id) +' '+ str(background_node_id) +' '+ str(10) +'\n' )
 		coupler_count += 1
@@ -70,10 +65,10 @@ def qubo_extractor(superpixels, segNeighbors, uniqueCouplers, foregroundModel, b
 		neighbor_background_node_id = neighbor_foreground_node_id+1
 		# print("Left Coupler:",leftCoupler,"Right Coupler:", rightCoupler)
 		f.write('c coupler between superpixels '+str(leftCoupler)+ " and "+str(rightCoupler)+':\n')
-		f.write('  '+ str(foreground_node_id) +' '+ str(neighbor_foreground_node_id) +' '+ str(doubleton_potential(superpixels,1,1,leftCoupler,rightCoupler)*k_3) +'\n' )
-		f.write('  '+ str(background_node_id) +' '+ str(neighbor_foreground_node_id) +' '+ str(doubleton_potential(superpixels,0,1,leftCoupler,rightCoupler)*k_2) +'\n' )
-		f.write('  '+ str(foreground_node_id) +' '+ str(neighbor_background_node_id) +' '+ str(doubleton_potential(superpixels,1,0,leftCoupler,rightCoupler)*k_2) +'\n' )
-		f.write('  '+ str(background_node_id) +' '+ str(neighbor_background_node_id) +' '+ str(doubleton_potential(superpixels,0,0,leftCoupler,rightCoupler)*k_3) +'\n' )
+		f.write('  '+ str(foreground_node_id) +' '+ str(neighbor_foreground_node_id) +' '+ str(doubleton_potential(superpixels,1,1,leftCoupler,rightCoupler)) +'\n' )
+		f.write('  '+ str(background_node_id) +' '+ str(neighbor_foreground_node_id) +' '+ str(doubleton_potential(superpixels,0,1,leftCoupler,rightCoupler)) +'\n' )
+		f.write('  '+ str(foreground_node_id) +' '+ str(neighbor_background_node_id) +' '+ str(doubleton_potential(superpixels,1,0,leftCoupler,rightCoupler)) +'\n' )
+		f.write('  '+ str(background_node_id) +' '+ str(neighbor_background_node_id) +' '+ str(doubleton_potential(superpixels,0,0,leftCoupler,rightCoupler)) +'\n' )
 		coupler_count += 4
 
 	#to add first line information			

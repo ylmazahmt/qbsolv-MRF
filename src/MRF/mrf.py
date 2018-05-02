@@ -13,6 +13,11 @@ from subprocess import call
 
 binsForHistogramIntersection = 255
 
+offset = -0.5
+# k_1 = 1
+# k_2 = 1
+# k_3 = k_2 + offset
+
 def histogram_intersection(segment_1, segment_2):
 	# print("segment 1:",segment_1)
 	# print("segment 2:",segment_2)
@@ -39,7 +44,7 @@ def unary_potential(superpixels,label,i,foregroundModel,backgroundModel):
 def doubleton_potential(superpixels,label,neighborLabel,i,neighbor):
 	if label ==  neighborLabel:
 		# print("Intersection of: ",i," with ", neighbor)
-		doubleton = 0 - histogram_intersection(superpixels[i],superpixels[neighbor])
+		doubleton = 0 - histogram_intersection(superpixels[i],superpixels[neighbor]) + offset
 	else:
 		# print("Intersection of: ",i," with ", neighbor)
 		doubleton = histogram_intersection(superpixels[i],superpixels[neighbor]) - 1
@@ -53,5 +58,5 @@ def energy(superpixels,seg,label,i,segNeighbors,foregroundModel,backgroundModel)
 	for neighbor in segNeighbors[i]:
 		doubleton += doubleton_potential(superpixels,label,seg[neighbor],i,neighbor)
 	# print("singleton: ",singleton,"doubleton: ",doubleton)
-	return  singleton + 0.01*doubleton
+	return  singleton + doubleton
 
