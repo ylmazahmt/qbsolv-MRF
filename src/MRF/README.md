@@ -12,18 +12,3 @@ _Darker pixels are more likely to be labelled as background according to intensi
 # 2 - Doubleton Potential:
 
 NULL for now.
-
-TO DO:
-------
-
-_Superpixels will be nodes for MRF model._
-_Law's masks will be applied to superpixels_
-_Distances will be calculated between histograms of superpixels_
-
-# 1 - Unary Potential:
-
-_A hardcoded foreground and background model for each image will be kept._
-
-# 2 - Doubleton Potential:
-
-_Between neigboring superpixels._
