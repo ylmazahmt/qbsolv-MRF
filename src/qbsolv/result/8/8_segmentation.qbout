@@ -1,5 +1,5 @@
-26 bits,  find Min, SubMatrix= 47, -a o, timeout=2592000.0 sec
-01010101101001011010100110
--31.37084 Energy of solution
+16 bits,  find Min, SubMatrix= 47, -a o, timeout=2592000.0 sec
+0101101010010110
+-20.23056 Energy of solution
 0 Number of Partitioned calls, 1 output sample 
- 0.00153 seconds of classic cpu time
+ 0.00109 seconds of classic cpu time
