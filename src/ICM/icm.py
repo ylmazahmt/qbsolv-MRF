@@ -76,7 +76,9 @@ def main():
 					output_image[i,j] = img[i,j]
 				else:
 					output_image[i,j,0:3] = img[i,j,0:3]
-				
+	
+	resulting_energy(superpixels,seg,segNeighbors,foregroundModel,backgroundModel)
+
 	scipy.misc.imsave(file_path,output_image*255)
 
 	if(os.path.isfile(file_path)):

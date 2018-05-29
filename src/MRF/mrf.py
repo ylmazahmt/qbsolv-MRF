@@ -57,3 +57,15 @@ def energy(superpixels,seg,label,i,segNeighbors,foregroundModel,backgroundModel)
 	# print("singleton: ",singleton,"doubleton: ",doubleton)
 	return  singleton + doubleton
 
+
+def resulting_energy(superpixels,seg,segNeighbors,foregroundModel,backgroundModel):
+	(N)= len(superpixels)
+	cost = 0
+	for i in range(N):
+		# Find segmentation level which has min energy (highest posterior)
+		cost += energy(superpixels,seg,seg[i],i,segNeighbors,foregroundModel,backgroundModel)
+		#print (total_cost)
+	print("Resulting energy is: ", cost)
+	return cost
+		
+

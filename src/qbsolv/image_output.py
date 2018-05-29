@@ -15,6 +15,7 @@ args = cmd_folder.split('/')
 src_folder = '/'.join(args[:-1])
 sys.path.insert(0, (src_folder))
 
+from MRF.mrf import *
 from MRF.superpixel import *
 
 def main():
@@ -25,8 +26,9 @@ def main():
 	seg_file_name = img_name + "_segmentation.qbout"
 	rel_path = "result/" +img_name + "/"
 	file_path = rel_path + seg_file_name
-	img=Image.open(img_source_path)
-	img=numpy.array(img)
+	img_model_path = "../../img/" + img_name + "_model"
+	image=Image.open(img_source_path)
+	img=numpy.array(image)
 	
 	(M,N) = img.shape[0:2]
 	rgb = img.shape[2:3]
@@ -71,6 +73,11 @@ def main():
 				else:
 					output_image[i,j,0:3] = img[i,j,0:3]
 	
+
+	superpixels,segNeighbors,segments,uniqueCouplers,segDict = superpixel_extractor(img)
+	foregroundModel, backgroundModel = model_extractor(image,img_model_path)
+	resulting_energy(superpixels,seg,segNeighbors,foregroundModel,backgroundModel)
+
 	output_file_name = str(img_name) + "_out." + str(ext)
 	file_path = rel_path + output_file_name
 	scipy.misc.imsave(file_path,output_image*255)

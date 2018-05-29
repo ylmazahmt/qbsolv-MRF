@@ -63,15 +63,15 @@ def superpixel_extractor(image):
 		isGrayscale = 0
 
 	segments = getSegments(image,isGrayscale)
-	print(segments)
-	# show the output of SLIC
-	fig = plt.figure("Superpixels -- %d segments" % (numSegments))
-	ax = fig.add_subplot(1, 1, 1)
-	ax.imshow(mark_boundaries(image, segments))
-	plt.axis("off")
+	# print(segments)
+	# # show the output of SLIC
+	# fig = plt.figure("Superpixels -- %d segments" % (numSegments))
+	# ax = fig.add_subplot(1, 1, 1)
+	# ax.imshow(mark_boundaries(image, segments))
+	# plt.axis("off")
 	 
-	# show the plots
-	plt.show()
+	# # show the plots
+	# plt.show()
 
 	# loop over the unique segment values
 	for (i, segVal) in enumerate(np.unique(segments)):
