@@ -49,6 +49,8 @@ def main():
 	if(os.path.isdir("result/" + img_name) != 1):
 		call(["mkdir","result/" + img_name])
 
+	resulting_energy(img,seg)
+
 	output_file_name = str(img_name) + "_out." + str(ext)
 	file_path = rel_path + output_file_name
 	scipy.misc.imsave(file_path,seg*255)
