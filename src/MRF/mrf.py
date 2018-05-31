@@ -51,7 +51,16 @@ def f_2(img,i,j,k):
 def energy(img,seg,label,i,j):
 	singleton = singleton_potential(img,label,i,j)
 	doubleton = doubleton_potential(img,seg,label,i,j)
-	return  singleton + 0*doubleton
+	return  singleton + 0.025*doubleton
+
+def resulting_energy(img,seg):
+	(M,N)=seg.shape[0:2]
+	cost = 0
+	for i in range(M):
+		for j in range(N):
+			cost += energy(img,seg,seg[i,j],i,j)
+	print("Resulting energy is: ", cost)
+	return cost
 
 def delta(a,b):
 	if (a==b):

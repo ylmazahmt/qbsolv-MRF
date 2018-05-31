@@ -8,6 +8,14 @@ import cv2
 import scipy
 import math
 from random import randint
+import sys,inspect,os
+
+cmd_folder = os.path.realpath(os.path.abspath(os.path.split(inspect.getfile( inspect.currentframe() ))[0]))
+args = cmd_folder.split('/')
+src_folder = '/'.join(args[:-1])
+sys.path.insert(0, (src_folder))
+
+from MRF.mrf import *
 
 def main():
 	img_source_path = sys.argv[1]
@@ -45,6 +53,8 @@ def main():
 
 	out= numpy.array(out)
 	out = out.reshape(M,N)
+
+	resulting_energy(img,out)
 
 	output_file_name = str(img_name) + "_out." + str(ext)
 	file_path = rel_path + output_file_name
